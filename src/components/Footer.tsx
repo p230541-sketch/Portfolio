@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Section header */}
           <div className="mb-12">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted mb-3">
-              07 — Contact
+              Contact
             </p>
             <p className="text-lg text-muted">Have something in mind?</p>
           </div>

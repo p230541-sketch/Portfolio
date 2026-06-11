@@ -55,11 +55,11 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Left-to-right fade — makes left half near-solid background */}
+        {/* Left-to-right fade - makes left half near-solid background */}
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/75 to-transparent" />
-        {/* Bottom fade — photo dissolves into next section */}
+        {/* Bottom fade - photo dissolves into next section */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        {/* Mobile flat tint — extra safety for text contrast */}
+        {/* Mobile flat tint - extra safety for text contrast */}
         <div className="absolute inset-0 bg-background/45 lg:bg-transparent" />
       </div>
 
@@ -75,7 +75,7 @@ export default function Hero() {
         {/* Kicker */}
         <FadeIn delay={0.2} className="mb-6">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            {profile.name} — {profile.role}
+            {profile.name} / {profile.role}
           </p>
         </FadeIn>
 

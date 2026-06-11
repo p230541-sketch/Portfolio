@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-moti
 export default function Cursor() {
   const prefersReducedMotion = useReducedMotion();
 
-  // Evaluate pointer capability synchronously on first render — no effect needed
+  // Evaluate pointer capability synchronously on first render - no effect needed
   const [active] = useState(
     () => typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches
   );
@@ -63,7 +63,7 @@ export default function Cursor() {
 
   return (
     <>
-      {/* Dot — raw values, zero lag */}
+      {/* Dot - raw values, zero lag */}
       <motion.div
         aria-hidden
         className="fixed pointer-events-none z-100 rounded-full bg-accent"
@@ -78,7 +78,7 @@ export default function Cursor() {
           transition: "width 0.2s, height 0.2s, opacity 0.2s",
         }}
       />
-      {/* Ring — spring-driven */}
+      {/* Ring - spring-driven */}
       <motion.div
         aria-hidden
         className="fixed pointer-events-none z-100 rounded-full border"
