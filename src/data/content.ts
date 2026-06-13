@@ -79,7 +79,7 @@ export interface CaseStudy {
   year: string;
   role: string;
   stack: string[];
-  link?: { label: string; href: string };
+  links?: { label: string; href: string }[];
   problem: string;
   build: string[];
   outcome: string;
@@ -95,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     role: "Design · Engineering · Infrastructure",
     stack: ["Go", "TypeScript", "AWS", "Terraform", "PostgreSQL", "React"],
-    link: { label: "View on GitHub", href: "https://github.com/p230541-sketch/restora" },
+    links: [{ label: "View on GitHub", href: "https://github.com/p230541-sketch/restora" }],
     problem:
       "Most teams back up their databases and hope the backups work. Restora was built to prove they do, by automatically restoring every backup into an ephemeral Postgres instance and verifying the data against a content hash. A backup that has never been restored is not a backup; it's a guess.",
     build: [
@@ -136,6 +136,35 @@ export const caseStudies: CaseStudy[] = [
       { value: 30, suffix: "%", label: "patient-flow efficiency gain" },
       { value: 10, suffix: "+", label: "staff using it daily" },
       { value: 0, label: "unauthorized data-access incidents" },
+    ],
+  },
+  {
+    id: "oep",
+    index: "03",
+    name: "OEP Transparency Index",
+    tagline: "Public watchdog for overseas-recruitment fraud",
+    year: "2026",
+    role: "Research · Data Engineering · Full-Stack",
+    stack: ["Python", "Flask", "SQLite", "BeautifulSoup", "rapidfuzz", "Jinja2"],
+    links: [
+      { label: "View live site", href: "https://oep-transparency-index-z6ur.vercel.app/" },
+      { label: "View on GitHub", href: "https://github.com/p230541-sketch/oep-transparency-index" },
+    ],
+    problem:
+      "Thousands of Pakistanis are defrauded every year by overseas-recruitment agents. The government's Bureau of Emigration (BEOE) licenses ~2,750 agencies and publishes every complaint, suspension, and blacklisting against them, but only as a chronological news feed with no way to look up a single agency's history. The data existed; the access didn't.",
+    build: [
+      "Polite, resumable Python scraper: robots.txt-verified, honest User-Agent, randomized 3–5s delays, exponential backoff, and a cache-first design so no page is ever fetched twice.",
+      "Parsing pipeline that absorbs the site's real-world mess (\"OEPL No.\" vs \"OEP No.\", stray periods inside license numbers, soft-404s that return HTTP 200) at 100% extraction coverage across all cached notices.",
+      "The hard part, entity resolution: agency names are written a dozen ways and complaint pages often omit the license number. A tiered rapidfuzz matcher auto-merges high-confidence names, queues uncertain ones for human review, and logs every decision with its score.",
+      "Flask + SQLite + Jinja2 web app with search, per-agency profiles, and statistics, deployed on Vercel.",
+      "Ethical republish-only design: the site makes no claim of its own and links every record back to its official BEOE source; backed by 27 passing pytest tests.",
+    ],
+    outcome:
+      "A worker can now type an agency's name and read its full official disciplinary history in two clicks, instead of scrolling a 9,500-item feed. 2,756 licensed agencies indexed, 99% resolution accuracy on a hand-reviewed sample, and a dataset that survives even if the source site changes, because everything flows through a local cache.",
+    metrics: [
+      { value: 2756, label: "licensed agencies indexed" },
+      { value: 99, suffix: "%", label: "entity-resolution accuracy" },
+      { value: 27, label: "tests passing in CI" },
     ],
   },
 ];

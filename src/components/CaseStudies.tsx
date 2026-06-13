@@ -50,20 +50,23 @@ export default function CaseStudies() {
                       </dt>
                       <dd className="text-sm text-muted">{study.year}</dd>
                     </div>
-                    {study.link && (
+                    {study.links && study.links.length > 0 && (
                       <div>
                         <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-faint mb-1">
-                          Link
+                          {study.links.length > 1 ? "Links" : "Link"}
                         </dt>
-                        <dd>
-                          <a
-                            href={study.link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm text-accent-soft hover:text-accent transition-colors duration-200 font-mono"
-                          >
-                            {study.link.label} ↗
-                          </a>
+                        <dd className="space-y-1.5">
+                          {study.links.map((link) => (
+                            <a
+                              key={link.href}
+                              href={link.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="block text-sm text-accent-soft hover:text-accent transition-colors duration-200 font-mono"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
                         </dd>
                       </div>
                     )}
